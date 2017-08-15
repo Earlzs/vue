@@ -1,11 +1,12 @@
 <template>
     <div class="mr-root">
-  11111
+          <p  class="mr-aaa">112212121212</p>
     </div>
 </template>
 
 <script>
-
+ var aa= $(".mr-aaa");
+ alert(aa)
 </script>
 
 <style>
