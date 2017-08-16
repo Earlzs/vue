@@ -3,6 +3,7 @@
   <img src='./assets//logo.png'>
    <img src='./assets/images/logo.png'>
     <h1>vue开始！</h1>
+        <i class="fa fa-address-book-o" aria-hidden="true">1</i>
      <transition name="side">
         <router-link to="/index">Go to Foo11</router-link>
     </transition>
