@@ -1,0 +1,26 @@
+$plain-font: "Myriad Pro"、Myriad、"Helvetica Neue"、Helvetica、"Liberation Sans";
+$font-size:14px;
+body {
+    font-style: $plain-font;
+    font-size: $font-size;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    border: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+
+
+i{
+    color: #fffffc
+}

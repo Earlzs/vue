@@ -1,0 +1,19 @@
+.header {
+    height: 50px;
+    z-index: 10;
+    background: #c62f2f;
+    display: flex;
+    justify-content: space-around;
+    align-items: center; // padding: 0 20px;
+    >div {
+        i {
+            font-size: 20px;
+        }
+    }
+    div:nth-child(2) {
+        // flex: 4;
+        i {
+            margin: 0 10px;
+        }
+    }
+}

@@ -1,55 +1,24 @@
 <template>
   <div id="app">
-  <img src='./assets//logo.png'>
-   <img src='./assets/images/logo.png'>
-    <h1>vue开始！</h1>
-        <i class="fa fa-address-book-o" aria-hidden="true">1</i>
-     <transition name="side">
-        <router-link to="/index">Go to Foo11</router-link>
-    </transition>
-     <transition name="side">
-        <router-link to="/register">Go to Bar</router-link>
-    </transition>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-
-export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+  export default {
+    name: 'app',
   }
-}
 </script>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  display:flex;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
+<style>
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    font-size: 14px;
+    height:100%;
+    width:100%;
+  }
 </style>
