@@ -43,6 +43,7 @@ export default {
 	background: #fff;
 	color: #333;
 	text-align: left;
+	cursor:pointer;
 	i {
 		color: #9a9a9a;
 		margin: 5px;

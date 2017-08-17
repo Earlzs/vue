@@ -1,32 +1,34 @@
 <template>
-   <div>
-    <h1>MyMusic</h1>
-        <p>3123123</p>
-          <h1>MyMusic</h1>
-        <p>3123123</p>
-          <h1>MyMusic</h1>
-        <p>3123123</p>
+<div>
 
-          <h1>MyMusic</h1>
-        <p>3123123</p>
-          <h1>MyMusic</h1>
-        <p>3123123</p>  <h1>MyMusic</h1>
-        <p>3123123</p>
-          <h1>MyMusic</h1>
-        <p>3123123</p>
+  <mylist></mylist>
 
-          <h1>MyMusic</h1>
-        <p>3123123</p>
-        </div>        
+</div>
 </template>
 
 <script>
+import mylist from './MyMusic/MyList.vue'
+
+
+
 export default {
-    name: 'Mymusic',
-    data: function() {	
-        return {}
-    },
-    methods: {}
+
+  name: 'Mymusic',
+
+  data: function() {
+
+    return {}
+
+  },
+
+  methods: {},
+
+  components: {
+
+    mylist: mylist
+
+  }
+
 }
 </script>
 
