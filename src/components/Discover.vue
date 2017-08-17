@@ -1,5 +1,9 @@
 <template>
-    <h1>discover</h1>
+<div>
+ <h1>discover</h1>
+
+</div>
+   
 </template>
 
 <script>
@@ -8,7 +12,8 @@ export default {
     data: function() {	
         return {}
     },
-    methods: {}
+    methods: {
+    }
 }
 </script>
 

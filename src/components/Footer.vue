@@ -1,17 +1,9 @@
 <template>
 <div class='footer'>
-
-
-    <div v-for="(item,index) in menuList" class='footer-item'>
-        <router-link v-bind:to="item.to">
-            <i v-bind:class="item.icon" aria-hidden="true"></i>
-            <br/> {{item.des}}
-        </router-link>
-
-    </div>
-
-
-
+    <router-link v-for="(item,index) of menuList" class='footer-item' :key="item.index" :to="item.to" active-class>
+        <i v-bind:class="item.icon" aria-hidden="true"></i>
+        <br/> {{item.des}}
+    </router-link>
 </div>
 </template>
 

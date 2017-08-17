@@ -1,20 +1,24 @@
 <template>
 <div id="app">
-  <transition name="bounce" mode="out-in">
+  <v-header></v-header>
+  <transition name="fade" mode="out-in">
     <router-view></router-view>
   </transition>
   <v-footer></v-footer>
+  <v-sidebar></v-sidebar>
 </div>
 </template>
 
 <script>
-import footer from './components//Footer.vue';
-
-
+import footer from './components/Footer.vue';
+import header from './components/Header.vue'
+import sidebar from './components/SideBar.vue'
 export default {
   name: 'app',
   components: {
     'v-footer': footer,
+    'v-header': header,
+    'v-sidebar':sidebar
   },
 }
 </script>
@@ -34,23 +38,16 @@ export default {
 
 /*组件切换的动画*/
 
-.bounce-enter-active {
-  animation: bounce-in .5s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .5s
 }
 
-.bounce-leave-active {
-  animation: bounce-in .5s reverse;
-}
+.fade-enter,
+.fade-leave-to
+/* .fade-leave-active in below version 2.1.8 */
 
-@keyframes bounce-in {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.5);
-  }
-  100% {
-    transform: scale(1);
-  }
+{
+  opacity: 0
 }
 </style>
