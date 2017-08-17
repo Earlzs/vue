@@ -22,9 +22,7 @@ const Sidebar = {
   },
 
   getters: {
-    isShowMeted() {
-      return this.state.isShow
-    }
+    isShowMeted:(state)=>state.isShow
   }
 
 }

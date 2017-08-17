@@ -1,0 +1,17 @@
+.music-sheet {
+  width: 100%;
+  background: #f3f3f3;
+  .sheet-title {
+    height: 28px;
+    line-height: 28px;
+    background: #e1e1e1;
+    position: relative;
+    i {
+      font-size: 16px;
+      color: #666;
+      position: absolute;
+      top: calc( 50% - 7px );
+      left: 20px;
+    }
+  }
+}

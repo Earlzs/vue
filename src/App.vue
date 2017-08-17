@@ -10,15 +10,26 @@
 </template>
 
 <script>
-import footer from './components/Footer.vue';
+import footer from './components/Footer.vue'
 import header from './components/Header.vue'
 import sidebar from './components/SideBar.vue'
+import store from './store'
+import axios from 'axios'
 export default {
   name: 'app',
   components: {
     'v-footer': footer,
     'v-header': header,
-    'v-sidebar':sidebar
+    'v-sidebar': sidebar
+  },
+
+  created() {
+    let LocalApi = 'static/data.json'
+    axios.get(LocalApi).then((res) => {
+      // this.info=res.data.user
+      store.dispatch('set_MusicAllList', res.data.music)
+      console.log(res.data.music)
+    })
   },
 }
 </script>
