@@ -1,65 +1,52 @@
 <template>
-<div>
-    <div class='mylist'>
-        <i class="fa fa-music"></i>
-        <div class="mylist-item">
-            我的音乐
-            <i></i>
-        </div>
-    </div>
-    <div class='mylist'>
-        <i class="fa fa-music"></i>
-        <div class="mylist-item">
-            我的音乐
-            <i></i>
-        </div>
-    </div>
-    <div class='mylist'>
-        <i class="fa fa-music"></i>
-        <div class="mylist-item">
-            我的音乐
-            <i></i>
-        </div>
-    </div>
-    <div class='mylist'>
-        <i class="fa fa-music"></i>
-        <div class="mylist-item">
-            我的音乐
-            <i></i>
-        </div>
+<div class='mylist'>
+    <i class="fa" :class="iconClass"></i>
+    <div class="mylist-item">
+        {{listname}}
+        <i v-if="trumpet" class="fa fa-bullhorn" aria-hidden="true"></i>
+        <p v-if="showBorder" class="border-1px"></p>
     </div>
 </div>
 </template>
 
 <script>
 export default {
-    data: function() {
-        return {}
+    props: {
+        isTrnmpet: {
+            type: Boolean,
+            default: false
+        },
+        hasBorder: {
+            type: Boolean,
+            default: true
+        },
+        name: {
+            type: String,
+            default: ''
+        },
+        icon: {
+            type: String,
+            default: ''
+        }
     },
-    methods: {}
+    data: function() {
+        return {
+            showBorder: true, //是否显示1px的线
+            trumpet: false, //是否显示小喇叭
+            listname: '',
+            iconClass: '',
+
+        }
+    },
+    created() {
+        this.showBorder = this.hasBorder;
+        this.trumpet = this.isTrnmpet;
+        this.listname = this.name;
+        this.iconClass = this.icon;
+    },
 }
 </script>
 
 <style lang='scss' scoped>
-$icon-red:#c62f2f;
-.mylist {
-    line-height: 50px;
-    background: rgb(247, 247, 247);
-    width: 100%;
-    display: flex;
-    >i {
-        flex: 2;
-        color: $icon-red;
-        font-size: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .mylist-item {
-        flex: 9;
-        display: flex;
-        justify-content: space-between;
-        border-bottom: 1px solid rgba(7, 17, 27, 0.1);
-    }
-}
+@import '../../styles/myMusic.scss';
 </style>

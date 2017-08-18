@@ -1,17 +1,112 @@
-.music-sheet {
-  width: 100%;
-  background: #f3f3f3;
-  .sheet-title {
-    height: 28px;
-    line-height: 28px;
-    background: #e1e1e1;
-    position: relative;
-    i {
-      font-size: 16px;
-      color: #666;
-      position: absolute;
-      top: calc( 50% - 7px );
-      left: 20px;
+$icon-red:#c62f2f;
+.mylist {
+    line-height: 50px;
+    background: rgb(247, 247, 247);
+    width: 100%;
+    display: flex;
+    >i {
+        flex: 0 0 50px;
+        color: $icon-red;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-  }
+    .mylist-item {
+        flex: 9;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        i {
+            font-size: 14px;
+            position: absolute;
+            top: 50%;
+            color: #c62f2f;
+            right: 5px;
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            transform: translate(0, -50%);
+        }
+        .border-1px {
+            position: absolute;
+            bottom: 0;
+            height: 1px;
+            background-color: rgba(7, 17, 27, 0.1);
+            width: 100%;
+        }
+    }
+    &:last-child {
+        .mylist-item {
+            border-bottom: 0px;
+        }
+    }
+}
+
+.music-sheet {
+    width: 100%;
+    height: auto;
+    background: #f3f3f3;
+    .sheet-title {
+        height: 28px;
+        line-height: 28px;
+        background: #e1e1e1;
+        position: relative;
+        font-size: 12px;
+        color: #666;
+        width: 100%;
+        .sheet-detail {
+            float: left;
+            margin-left: 40px;
+        }
+        .down {
+            font-size: 16px;
+            color: #666;
+            position: absolute;
+            top: calc( 50% - 8px);
+            left: 20px;
+        }
+        .setting {
+            position: absolute;
+            top: calc( 50% - 8px);
+            right: 20px;
+            color: #666; // width: 15px;
+        }
+    }
+}
+
+.music-content {
+    height: 60px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    img {
+        margin: 5px;
+        width: 50px;
+        height: 50px;
+        flex: 0 0 50px;
+    }
+    .detail {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        margin-left: 5px;
+        .name {
+            flex: 1;
+            line-height: 30px;
+        }
+        .count {
+            flex: 1;
+            line-height: 30px;
+        }
+        .expand{
+          position: absolute;
+          // width: 36px;
+          // height: 36px;
+          right: 22px;
+          color: #999;
+          top: calc(50% - 18px);
+        }
+    }
 }

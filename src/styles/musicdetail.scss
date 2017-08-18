@@ -1,0 +1,179 @@
+.music-detail {
+    z-index: 28;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: #ccc;
+    top: 0;
+    .fifterbg {
+        background: url("http://oiq8j9er1.bkt.clouddn.com/music_%E5%A4%96%E9%9D%A2%E7%9A%84%E4%B8%96%E7%95%8C.jpg") center center / cover;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        filter: blur(30px);
+        transition: all 0.5s
+    }
+    .detail-content {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1
+    }
+}
+
+.detail-content {
+    .content-header {
+        height: 11vh;
+        padding: 1vh 0;
+        display: flex;
+        position: relative;
+        align-items: center;
+        i {
+            width: 50px;
+            font-size: 24px;
+        }
+        .singer-detail {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            color: #fff;
+        }
+        .manage {
+            position: absolute;
+            right: 0;
+        }
+    }
+}
+
+.content-wrapper {
+    height: auto;
+    height: 70vh;
+    overflow: hidden;
+    .cdcard {
+        position: relative; // height: 17vh;
+        z-index: 3;
+        .line {
+            width: 80%;
+            height: 1px;
+            margin: auto;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0))
+        }
+        .triger {
+            background-image: url(/static/swith.png);
+            background-size: cover;
+            width: 90px;
+            height: 140px;
+            transform: rotateZ(-22deg);
+            position: absolute;
+            top: 77px;
+            bottom: 0;
+            left: 85px;
+            right: 0;
+            margin: auto; // transform: rotateZ(3deg);
+            // top: 105px;
+            // left: 63px;
+        }
+    }
+    .cdrotate {
+        height: 45vh;
+        position: relative;
+        overflow: hidden;
+        margin-top: 8vh;
+        margin-bottom: 12vh;
+        img {
+            width: 28vh;
+            height: 28vh;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        .rotatebg {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 44vh;
+            height: 44vh;
+            background: url("/static/cd-mine.png");
+            background-size: cover;
+            z-index: 2
+        }
+    }
+}
+
+.musicDo {
+    // height:24vh;
+    width: 100%;
+    height: 8vh;
+    padding: 0 10%;
+    display: flex;
+    align-items: center;
+    i {
+        flex: 1;
+        width: 40px; // height: 40px;
+        font-size: 26px; // line-height:8vh;
+        height: 8vh;
+    }
+}
+
+.rangge {
+    height: 7vh;
+}
+
+.detailCtrl {
+    height: 12vh;
+    display: flex;
+    align-items: center;
+    i {
+        flex: 1;
+    }
+    .random,
+    .misicList {
+        color: #e1e1e1;
+    }
+    .backward,
+    .forward {
+        font-size: 20px;
+    }
+    .playMusic {
+        font-size: 48px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 音乐列表入场出厂方式
+.silderUp-enter-to,
+.silderUp-leave-to {
+    transition: all 0.8s
+}
+
+.silderUp-enter {
+    transform: rotate(360deg);
+    opacity: 0;
+}
+
+.silderUp-leave-to {
+    transform: translateX(100%);
+    opacity: 0
+}

@@ -7,10 +7,10 @@
 	<transition name="side">
 		<div class='menu-content' v-show="isReallShow">
 			<div class="menu-des clearfix">
-				<img src="../assets/userlogo.jpg" alt="person-photo">
+				<img src="static/userlogo.jpg" alt="person-photo">
 				<div class='user-des'>
 					<span>宾克斯的美酒</span>
-					<img class="isvip" src="../assets/vip.png" alt="vip用户">
+					<img class="isvip" src="static/vip.png" alt="vip用户">
 					<div class='level'>Lv.9</div>
 
 					<transition name="bounce">

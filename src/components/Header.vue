@@ -3,13 +3,13 @@
     <div>
         <i class="fa fa-bars" @click="showMueu" aria-hidden="true"></i>
     </div>
-    <div>
-        <i class="fa fa-music" aria-hidden="true"></i>
-        <i class="fa fa-free-code-camp" aria-hidden="true"></i>
-        <i class="fa fa-address-card-o" aria-hidden="true"></i>
-    </div>
-    <div>
+    <div class='search'>
+        <input type="text" placeholder='搜索音乐、歌词、电台'>
         <i class="fa fa-search" aria-hidden="true"></i>
+    </div>
+
+    <div>
+        <i class="fa fa-signal" aria-hidden="true" @click='showMusicList'></i>
     </div>
 
 </div>
@@ -31,11 +31,16 @@ export default {
                 type: 'showSideBar'
             })
         },
-        hideMuen(){
-            store.dispatch({
-                type: 'hideSideBar'
-            })
+        // hideMuen() {
+        //     store.dispatch({
+        //         type: 'hideSideBar'
+        //     })
+        // }
+
+        showMusicList() {
+           store.dispatch('show_MusicList')
         }
+
     }
 }
 </script>
@@ -43,5 +48,5 @@ export default {
 
 <style lang="scss" scoped>
 @import "../styles/base.scss";
-@import "../styles/home.scss";
+@import "../styles/header.scss";
 </style>

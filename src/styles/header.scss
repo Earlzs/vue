@@ -1,0 +1,43 @@
+.header {
+    height: 50px;
+    z-index: 1;
+    background: #c62f2f;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; // padding: 0 20px;
+    padding: 0 20px;
+    >div {
+        i {
+            font-size: 20px;
+        }
+    }
+    div:nth-child(2) {
+        // flex: 4;
+        i {
+            margin: 0 10px;
+        }
+    }
+    .search{
+        width: 60%;
+        height: 28px;
+        position: absolute;
+        left: 21%;
+        >input{
+            width: 100%;
+            height: 100%;
+            padding-left: 10%;
+            border-radius: 30px;
+          
+        }
+        i{
+            position: absolute;
+            left: 0px;
+            top: 8px;
+            font-size: 10px;
+            color: #e1e1e1;
+        }
+    }
+}

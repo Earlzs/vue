@@ -6,6 +6,7 @@
   </transition>
   <v-footer></v-footer>
   <v-sidebar></v-sidebar>
+  <v-detail></v-detail>
 </div>
 </template>
 
@@ -13,14 +14,18 @@
 import footer from './components/Footer.vue'
 import header from './components/Header.vue'
 import sidebar from './components/SideBar.vue'
+import musicDetail from './components/MusciDetail.vue'
 import store from './store'
 import axios from 'axios'
+
+
 export default {
   name: 'app',
   components: {
     'v-footer': footer,
     'v-header': header,
-    'v-sidebar': sidebar
+    'v-sidebar': sidebar,
+    'v-detail':musicDetail
   },
 
   created() {
@@ -44,6 +49,7 @@ export default {
   font-size: 14px;
   height: 100%;
   width: 100%;
+  padding:50px 0 ;
 }
 
 
