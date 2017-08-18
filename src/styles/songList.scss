@@ -1,0 +1,62 @@
+.songList {
+    height: 100%;
+    width: 100%;
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    background-color: #fff;
+}
+
+.song-header {
+    height: 30%;
+    padding: 18px;
+    background: url("http://oiq8j9er1.bkt.clouddn.com/music_far%20away.jpg");
+    background-size: 5500%;
+    color: #fff;
+    i {
+        font-size: 24px;
+        width: 36px;
+        height: 36px; // vertical-align: sub;
+    }
+    .title {
+        height: 10%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        span {
+            font-size: 22px;
+        }
+    }
+}
+
+.musicDetail {
+    height: 70%;
+    padding: 25px 10px 0 20px;
+    >img {
+        width: 95px;
+        height: 95px;
+        float: left;
+        margin-right: 20px;
+    }
+    .musicDetail-r {
+        height: 100%;
+        float: left;
+        >div {
+            text-align: left;
+            margin-top: 20px;
+        }
+    }
+}
+
+.operation {
+    display: flex;
+    >div {
+        flex: 1;
+        >i{
+            font-size: 18px;
+            width: 10px;
+            height: 26px;
+            text-align: center;
+        }
+    }
+}

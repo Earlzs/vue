@@ -7,6 +7,7 @@
   <v-footer></v-footer>
   <v-sidebar></v-sidebar>
   <v-detail></v-detail>
+  <songList></songList>
 </div>
 </template>
 
@@ -15,6 +16,7 @@ import footer from './components/Footer.vue'
 import header from './components/Header.vue'
 import sidebar from './components/SideBar.vue'
 import musicDetail from './components/MusciDetail.vue'
+import songList from './components/SongList.vue'
 import store from './store'
 import axios from 'axios'
 
@@ -25,7 +27,8 @@ export default {
     'v-footer': footer,
     'v-header': header,
     'v-sidebar': sidebar,
-    'v-detail':musicDetail
+    'v-detail': musicDetail,
+    songList,
   },
 
   created() {
@@ -49,7 +52,7 @@ export default {
   font-size: 14px;
   height: 100%;
   width: 100%;
-  padding:50px 0 ;
+  padding: 50px 0;
 }
 
 
