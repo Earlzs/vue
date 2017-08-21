@@ -11,9 +11,11 @@ const audio = {
     // 当前播放歌曲的索引
     currentIndex: 0,
     // 当前播放的时间
-		currentTime: 0,
-    	// 音乐的播放时长
-		musicAlltime: 0,
+    currentTime: 0,
+    // 音乐的播放时长
+    musicAlltime: 0,
+    	// 音乐是否在加载
+		musicLoadStart: false
   },
   getters: {
     getMusicList: state => state.musicList,
@@ -26,35 +28,50 @@ const audio = {
     getCurrentMusic: state => state.musicList[state.currentIndex],
     // 获取当前的播放进度
     getCurrentTime: state => state.currentTime,
-    getAllTime: state=> state.musicAlltime,
+    getAllTime: state => state.musicAlltime,
+    	// 音乐开始加载
+		getIsLoadStart: state => state.musicLoadStart,
   },
   mutations: {
     play(state) {
       state.playing = true,
         state.audioele.play()
     },
-    playPrev(state){
-      state.currentIndex --;
-      const length=state.musicList.length
-      if(state.currentIndex<0){
-        state.currentIndex=length-1
+    playPrev(state) {
+      state.currentIndex--;
+      const length = state.musicList.length
+      if (state.currentIndex < 0) {
+        state.currentIndex = length - 1
       }
       state.audioelement.setAttribute('src', state.musicList[state.currentIndex].url)
-			state.playing = true
-			state.audioelement.load()
-			state.audioelement.play()
+      state.playing = true
+      state.audioelement.load()
+      state.audioelement.play()
     },
-    playNext(state){
-      state.currentIndex ++;
-      const length=state.musicList.length
-      if(state.currentIndex>=length){
-         state.currentIndex=0
+    playNext(state) {
+      state.currentIndex++;
+      const length = state.musicList.length
+      if (state.currentIndex >= length) {
+        state.currentIndex = 0
       }
       state.audioele.setAttribute('src', state.musicList[state.currentIndex].url)
       state.playing = true
-			state.audioele.load()
-			state.audioele.play()
+      state.audioele.load()
+      state.audioele.play()
     },
+
+    playEnded(state) {
+      state.currentIndex++
+        const length = state.musicList.length
+      if (state.currentIndex >= length) {
+        state.currentIndex = 0
+      }
+      state.audioelement.setAttribute('src', state.musicList[state.currentIndex].url)
+      state.playing = true
+      state.audioelement.load()
+      state.audioelement.play()
+    },
+
     togglePlay(state) {
       if (state.playing) {
         state.playing = false
@@ -74,44 +91,71 @@ const audio = {
       state.musicList = obj.all;
       state.musicAllList = obj
     },
-	setCurrentTime (state, obj) {
-			state.currentTime = obj.time
-		},
+    setCurrentTime(state, obj) {
+      state.currentTime = obj.time
+    },
     setMusicDetail(state, obj) {
       state.musicDetail = obj.isShow
     },
     //音乐的总时长
-    MusicDuration(state , obj){
-      state.musicAlltime=obj.duration
+    MusicDuration(state, obj) {
+      state.musicAlltime = obj.duration
     },
+        	// 设置音乐是否正在加载
+		setMusicLoadStart (state, obj) {
+			state.musicLoadStart = obj.isloadstart
+		},
   },
   actions: {
     //设置音频元素
-    set_AudioEle({commit}, obj) {
+    set_AudioEle({
+      commit
+    }, obj) {
       commit('set_AudioEle', obj)
     },
-    set_MusicList({commit}, obj) {
+    set_MusicList({
+      commit
+    }, obj) {
       commit('setMusicList', obj)
     },
-    set_MusicAllList({commit}, obj)
-     {commit('setMusicAllList', obj)
+    set_MusicAllList({
+      commit
+    }, obj) {
+      commit('setMusicAllList', obj)
     },
 
-    show_MusicDetail({commit}, ) {
+    show_MusicDetail({
+      commit
+    }, ) {
       commit('setMusicDetail')
     },
-    play_prev({commit}){
+    play_prev({
+      commit
+    }) {
       commit('playPrev')
     },
-    play_next({commit}){
+    play_next({
+      commit
+    }) {
       commit('playNext')
     },
-	set_CurrentTime ({commit}, obj) {
-			commit('setCurrentTime', obj)
-		},
-    set_MusicDuration({commit},obj){
-         commit('MusicDuration',obj)
-    }
+    paly_ended({
+      commit
+    }) {
+      commit('playEnded')
+    },
+
+    set_CurrentTime({
+      commit
+    }, obj) {
+      commit('setCurrentTime', obj)
+    },
+    set_MusicDuration({
+      commit
+    }, obj) {
+      commit('MusicDuration', obj)
+    },
+
 
   }
 }

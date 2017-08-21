@@ -2,7 +2,7 @@
 <div class='range'>
     <span class='rangeNowtime'>{{timeFormat(musicCurrentTime)}}</span>
     <div class='duration'>
-        <span class='currentProgress'  :style="progressWidth" ref="currentProgress" ></span>
+        <span class='currentProgress' :style="progressWidth" ref="currentProgress"></span>
         <span class='ball'></span>
     </div>
     <div class='rangeAlltime'>{{timeFormat(musicAllTime)}}</div>
@@ -19,16 +19,27 @@ export default {
     },
     computed: {
         musicCurrentTime() {
-             console.log(this.$store.getters.getCurrentTime+'---current')
+            console.log(this.$store.getters.getCurrentTime + '---current')
             return this.$store.getters.getCurrentTime ? this.$store.getters.getCurrentTime : '00:00'
         },
         //获取总时长
         musicAllTime() {
-            console.log(this.$store.getters.getAllTime +'---alltime')
+            console.log(this.$store.getters.getAllTime + '---alltime')
             return this.$store.getters.getAllTime ? this.$store.getters.getAllTime : '00:00'
         },
-        progressWidth(){
-                return	{'width': `calc(${(this.$store.getters.getCurrentTime / this.$store.getters.getAllTime * 100).toFixed(2)}%`}
+        progressWidth() {
+            if (!this.$store.getters.getIsLoadStart) {
+                console.log(111)
+                return {
+                     'width': `calc(${(this.$store.getters.getCurrentTime / this.$store.getters.getMusicDuration * 100).toFixed(2)}%`
+                }
+            } else {
+                console.log(222)
+                return {
+                   'width': '0'
+                }
+            }
+
         },
     },
     methods: {

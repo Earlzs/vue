@@ -1,6 +1,6 @@
 <template>
 <div id="app">
-  <audio id="myaudio" ref="audio" @playing="musicOnPlaying" @canplay="musicCanPlay" @timeupdate='musicTimeUpdate'></audio>
+  <audio id="myaudio" ref="audio" @playing="musicOnPlaying" @canplay="musicCanPlay" @timeupdate='musicTimeUpdate' @ended='musicEnded'  @loadstart="loadStart"></audio>
   <v-header></v-header>
   <transition name="fade" mode="out-in">
     <router-view></router-view>
@@ -31,6 +31,10 @@ export default {
     songList,
   },
   methods: {
+
+      musicEnded(){
+      store.dispatch('paly_ended')
+    },
     //控制音乐处于播放状态
     musicOnPlaying() {
       store.commit('play')
@@ -42,6 +46,10 @@ export default {
         type: 'set_MusicDuration',
         duration: Math.floor(this.$refs.audio.duration)
       })
+       store.commit({
+        type: 'setMusicLoadStart',
+        isloadstart: false
+      })
     },
 
     musicTimeUpdate() {
@@ -50,6 +58,13 @@ export default {
         time: Math.floor(this.$refs.audio.currentTime)
       })
     },
+        // 音乐加载
+    loadStart () {
+      store.commit({
+        type: 'setMusicLoadStart',
+        isloadstart: true
+      })
+    }
 
   },
   created() {
