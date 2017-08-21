@@ -8,7 +8,12 @@ const audio = {
     musicAllList: [],
 
     musicDetail: false,
+    // 当前播放歌曲的索引
     currentIndex: 0,
+    // 当前播放的时间
+		currentTime: 0,
+    	// 音乐的播放时长
+		musicAlltime: 0,
   },
   getters: {
     getMusicList: state => state.musicList,
@@ -21,6 +26,7 @@ const audio = {
     getCurrentMusic: state => state.musicList[state.currentIndex],
     // 获取当前的播放进度
     getCurrentTime: state => state.currentTime,
+    getAllTime: state=> state.musicAlltime,
   },
   mutations: {
     play(state) {
@@ -68,10 +74,16 @@ const audio = {
       state.musicList = obj.all;
       state.musicAllList = obj
     },
-
+	setCurrentTime (state, obj) {
+			state.currentTime = obj.time
+		},
     setMusicDetail(state, obj) {
       state.musicDetail = obj.isShow
-    }
+    },
+    //音乐的总时长
+    MusicDuration(state , obj){
+      state.musicAlltime=obj.duration
+    },
   },
   actions: {
     //设置音频元素
@@ -94,6 +106,12 @@ const audio = {
     play_next({commit}){
       commit('playNext')
     },
+	set_CurrentTime ({commit}, obj) {
+			commit('setCurrentTime', obj)
+		},
+    set_MusicDuration({commit},obj){
+         commit('MusicDuration',obj)
+    }
 
   }
 }

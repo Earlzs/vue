@@ -1,7 +1,7 @@
 <template>
 <transition name='silderUp'>
     <div class='music-detail' v-show='showMusicDetail'>
-        <div class='fifterbg' :style="{background : 'url(' + this.getCurrentMusic.img_url + ')', backgroundSize : 'cover' , backgroundPosition : 'center center'}"></div>
+        <div class='fifterbg' :style="{background : 'url(' + this.getCurrentMusic.img_url + ')', backgroundSize : '2200%' , backgroundPosition : 'center center'}"></div>
         <div class='detail-content'>
             <div class='content-header'>
                 <i class="fa fa-undo back" aria-hidden="true" @click='hideMusicList'></i>
@@ -34,9 +34,10 @@
                 </div>
             </div>
 
-
             <div class='content-footer'>
-                <div class='rangge'></div>
+                <div class='rangge'>
+                    <range></range>
+                </div>
                 <div class='detailCtrl'>
                     <i class="fa fa-random random" aria-hidden="true"></i>
                     <i class="fa fa-step-backward backward" aria-hidden="true" @click.stop='playPrev'></i>
@@ -54,7 +55,7 @@
 // <i class="fa fa-pause" aria-hidden="true"></i>
 
 import store from '../store/'
-
+import range from '../components/MusicDetail/range.vue'
 
 export default {
     data: function() {
@@ -62,6 +63,7 @@ export default {
             isPlay: false
         }
     },
+
     methods: {
         //隐藏详情列表
         hideMusicList() {
@@ -110,7 +112,10 @@ export default {
                 this.$refs.cdcontent.style.transform = contentTrans === 'none' ? imageTrans : imageTrans.concat('', contentTrans)
             }
         },
-    }
+    },
+    		components: {
+			'range': range
+		},
 }
 </script>
 
