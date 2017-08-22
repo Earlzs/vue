@@ -1,16 +1,14 @@
 <template>
 <div class="music-sheet">
-    <div class="sheet-title clearfix">
-        <i class="fa fa-angle-down down" aria-hidden="true"></i>
+    <div class="sheet-title clearfix" @click='toggleSheets(event)'>
+        <i class="fa fa-angle-down down" aria-hidden="true" ref='toggleicon'></i>
         <div class="sheet-detail">
             <span class="name">{{data_item.name}}</span>
             <span class="count">({{data_item.count}})</span>
         </div>
         <i class="fa fa-cog setting" aria-hidden="true"></i>
     </div>
-
-
-    <div class="music-content" v-for="(list, listindex) in data_item.detail" @click.stop="showSongSheet(list)">
+    <div class="music-content" v-show="showSheets" v-for="(list, listindex) in data_item.detail" @click.stop="showSongSheet(list)">
         <img :src="list.info[0].img_url" alt="">
         <div class="detail">
             <p class="name">{{list.name}}</p>
@@ -20,6 +18,8 @@
         </div>
 
     </div>
+
+
 </div>
 </template>
 
@@ -37,13 +37,30 @@ export default {
     data: function() {
         return {
             data_item: {},
-            data_index: {}
+            data_index: {},
+            showSheets: true
         }
     },
     mounted() {
         this.data_item = this.item
         this.data_index = this.index
     },
+    methods: {
+        toggleSheets(event) {
+            this.$refs.toggleicon.style.transform = this.showSheets ? 'rotate(-90deg) ' : 'rotate(0)';
+            this.showSheets = !this.showSheets;
+        },
+        showSongSheet(list) {
+            store.dispatch({
+                type: 'set_MusicSheetList',
+                data: data
+            })
+            store.commit({
+                type: 'setIsShowSongSheet',
+                isShow: true
+            })
+        }
+    }
 }
 </script>
 

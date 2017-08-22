@@ -14,13 +14,13 @@
 
 
             <div class='content-wrapper'>
-                    <div class='line'></div>
-                    <div class='triger' :class="isPlaying?'':'pause'"></div>
+                <div class='line'></div>
+                <div class='triger' :class="isPlaying?'':'pause'"></div>
 
                 <div ref="cdcontent">
                     <div class='cdrotate' ref="cd" :class="isPlaying ? 'animate ' : ''">
                         <div class='rotatebg'></div>
-                        <img :src="getCurrentMusic.img_url" alt="" >
+                        <img :src="getCurrentMusic.img_url" alt="">
                     </div>
                 </div>
 
@@ -39,11 +39,11 @@
                     <range></range>
                 </div>
                 <div class='detailCtrl'>
-                    <i class="fa fa-random random" aria-hidden="true"></i>
+                    <i class="fa random" :class='musicPlayType' aria-hidden="true" @click.stop='setPlayType'></i>
                     <i class="fa fa-step-backward backward" aria-hidden="true" @click.stop='playPrev'></i>
                     <i class="fa playMusic" :class='isPlaying? "fa-play-circle-o": "fa-pause"' @click.stop='playPause' aria-hidden="true"></i>
                     <i class="fa fa-step-forward forward" aria-hidden="true" @click.stop='playNext'></i>
-                    <i class="fa fa-list misicList" aria-hidden="true"></i>
+                    <i class="fa fa-list misicList" aria-hidden="true" @click.stop="showMusicList"></i>
                 </div>
             </div>
         </div>
@@ -73,11 +73,24 @@ export default {
         playPause() {
             store.commit('togglePlay')
         },
-        playNext(){
+        playNext() {
             store.dispatch('play_next')
         },
-        playPrev(){
-             store.dispatch('play_prev')
+        playPrev() {
+            store.dispatch('play_prev')
+        },
+        // 显示音乐列表
+        showMusicList() {
+            let scrollTop = (this.$store.getters.getCurrentIndex + 1 - 3) * 42
+            store.dispatch({
+                type: 'set_ScrollTop',
+                scrollTop: scrollTop
+            })
+            store.dispatch('showMusicList')
+        },
+        //设置播放方式
+        setPlayType(){
+            store.dispatch('set_palyType')
         }
     },
     computed: {
@@ -96,7 +109,25 @@ export default {
 
             console.log(this.$store.getters.getCurrentMusic);
             return this.$store.getters.getCurrentMusic ? this.$store.getters.getCurrentMusic : ''
-        }
+        },
+        musicPlayType () {
+				let playType = this.$store.getters.getMusicPlayType ? this.$store.getters.getMusicPlayType : -1
+				let className = ''
+				switch (playType) {
+					case 3:
+						className = 'fa-random'
+						break
+					case 2:
+						className = 'fa-angellist'
+						break
+					case 1:
+						className = 'fa-font-awesome'
+						break
+					default:
+						className = ''
+				}
+				return className
+			},
 
     },
     watch: {
@@ -113,9 +144,9 @@ export default {
             }
         },
     },
-    		components: {
-			'range': range
-		},
+    components: {
+        'range': range
+    },
 }
 </script>
 

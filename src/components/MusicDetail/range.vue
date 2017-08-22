@@ -3,7 +3,7 @@
     <span class='rangeNowtime'>{{timeFormat(musicCurrentTime)}}</span>
     <div class='duration' ref="duration" @click.stop="setCurrentProgress($event)">
         <span class='currentProgress' :style="progressWidth" ref="currentProgress"></span>
-        <span class='ball'  ref="ball" @mousedown.stop()="mouseDown" @touchstart.stop()="mouseDown" @touchmove.stop()="touchMove($event)" @touchend.stop()="touchEnd($event)"></span>
+        <span class='ball'  ref="ball"   @mousedown.stop()="mouseDown" @touchstart.stop()="mouseDown" @touchmove.stop()="touchMove($event)" @touchend.stop()="touchEnd($event)"></span>
     </div>
     <div class='rangeAlltime'>{{timeFormat(musicAllTime)}}</div>
 </div>

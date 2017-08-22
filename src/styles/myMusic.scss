@@ -66,6 +66,7 @@ $icon-red:#c62f2f;
             position: absolute;
             top: calc( 50% - 8px);
             left: 20px;
+              transition: all 0.8s
         }
         .setting {
             position: absolute;
@@ -110,3 +111,4 @@ $icon-red:#c62f2f;
         }
     }
 }
+
