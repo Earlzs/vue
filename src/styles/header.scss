@@ -1,3 +1,13 @@
+
+ @keyframes palyMusic {
+        0% {
+            transform: rotate(0)
+        }
+        100% {
+            transform: rotate(360deg)
+        }
+    }
+
 .header {
     height: 50px;
     z-index: 1;
@@ -9,6 +19,9 @@
     justify-content: space-between;
     align-items: center; // padding: 0 20px;
     padding: 0 20px;
+    .fa-spinner{
+        animation: palyMusic 5s linear infinite 0.1s;
+    }
     >div {
         i {
             font-size: 20px;

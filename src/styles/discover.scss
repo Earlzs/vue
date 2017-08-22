@@ -1,0 +1,30 @@
+.find-menu{
+    display: flex;
+    line-height: 36px;
+    .menu-list{
+        flex: 1
+    }
+    &.active{
+
+    }
+}
+
+
+.router-link-active{
+    color: #c62f2f;
+    border-bottom: 2px solid #c62f2f;
+}
+
+
+.side-enter-active,
+.side-leave-active {
+    transition: transform .2s
+}
+
+.side-enter,
+.side-leave-to
+/* .fade-leave-active in below version 2.1.8 */
+
+{
+    transform: translateX(-606px)
+}
