@@ -178,12 +178,6 @@
     opacity: 0
 }
 
-
-
-
-
-
-
 .range {
     width: 90%;
     height: 100%;
@@ -193,39 +187,42 @@
     display: flex;
     box-sizing: border-box;
     padding: 0 10px;
-    .rangeNowtime{
-        font-size:12px;
-			color:rgba(255,255,255,0.8);
-			margin-right:10px;
+    .rangeNowtime {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.8);
+        margin-right: 10px;
     }
-    .duration{
-        	flex:1;
-			height:2px;
-			border-radius:1px;
-			background:rgba(244,244,244,0.3);
-			margin:0 auto;
-			font-size:0;
-			cursor:pointer;
-			position:relative;
-            .currentProgress{
-                display:inline-block;
-				width:0%;
-				height:2px;
-				background:#e98;
-				float:left;
-            }
-            .ball{
-                width: 12px;
-                height: 12px;background-color: #fff;
-                border-radius: 50%;
-                float: left;
-                position: relative;
-                top: -5px;
-            }
+    .duration {
+        flex: 1;
+        height: 2px;
+        border-radius: 1px;
+        background: rgba(244, 244, 244, 0.3);
+        margin: 0 auto;
+        font-size: 0;
+        cursor: pointer;
+        position: relative;
+        text-align: left;
+        .currentProgress {
+            display: inline-block;
+            width: 0%;
+            height: 2px;
+            background: #e98;
+            float: left;
+        }
+        .ball {
+            width: 12px;
+            height: 12px;
+            background-color: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: -5px;
+            float: left;
+            
+        }
     }
-    .rangeAlltime{
-        	font-size:12px;
-			color:rgba(255,255,255,0.8);
-			margin-left:10px;
+    .rangeAlltime {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.8);
+        margin-left: 10px;
     }
 }

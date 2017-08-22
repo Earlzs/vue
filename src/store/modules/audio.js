@@ -21,6 +21,9 @@ const audio = {
     getMusicList: state => state.musicList,
     getAllMusicList: state => state.musicAllList,
     getIsPlaying: state => state.playing,
+
+
+    getAudioEle:state=>state.audioele,
     // 当前音乐的索引值
     showMusicDetail: state => state.musicDetail,
     getCurrentIndex: state => state.currentIndex,
@@ -61,15 +64,15 @@ const audio = {
     },
 
     playEnded(state) {
-      state.currentIndex++
+      state.currentIndex++;
         const length = state.musicList.length
       if (state.currentIndex >= length) {
         state.currentIndex = 0
       }
-      state.audioelement.setAttribute('src', state.musicList[state.currentIndex].url)
+      state.audioele.setAttribute('src', state.musicList[state.currentIndex].url)
       state.playing = true
-      state.audioelement.load()
-      state.audioelement.play()
+      state.audioele.load()
+      state.audioele.play()
     },
 
     togglePlay(state) {
@@ -108,51 +111,33 @@ const audio = {
   },
   actions: {
     //设置音频元素
-    set_AudioEle({
-      commit
-    }, obj) {
+    set_AudioEle({commit}, obj) {
       commit('set_AudioEle', obj)
     },
-    set_MusicList({
-      commit
-    }, obj) {
+    set_MusicList({commit}, obj) {
       commit('setMusicList', obj)
     },
-    set_MusicAllList({
-      commit
-    }, obj) {
+    set_MusicAllList({commit}, obj) {
       commit('setMusicAllList', obj)
     },
 
-    show_MusicDetail({
-      commit
-    }, ) {
+    show_MusicDetail({commit}, ) {
       commit('setMusicDetail')
     },
-    play_prev({
-      commit
-    }) {
+    play_prev({commit }) {
       commit('playPrev')
     },
-    play_next({
-      commit
-    }) {
+    play_next({commit}) {
       commit('playNext')
     },
-    paly_ended({
-      commit
-    }) {
+    paly_ended({commit }) {
       commit('playEnded')
     },
 
-    set_CurrentTime({
-      commit
-    }, obj) {
+    set_CurrentTime({commit}, obj) {
       commit('setCurrentTime', obj)
     },
-    set_MusicDuration({
-      commit
-    }, obj) {
+    set_MusicDuration({commit}, obj) {
       commit('MusicDuration', obj)
     },
 
