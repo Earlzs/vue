@@ -75,6 +75,9 @@ export default {
       store.dispatch('set_MusicAllList', res.data.music)
       console.log(res.data.music);
 
+         // 所有的数据存起来  包括音乐个人信息 等等
+      store.dispatch('set_AllInfo', res.data)
+      
       this.$refs.audio.setAttribute('src', store.getters.getCurrentMusic.url)
       //获取audio元素方便操作
       store.dispatch('set_AudioEle', this.$refs.audio)
