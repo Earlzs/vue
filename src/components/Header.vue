@@ -9,7 +9,7 @@
     </div>
 
     <div>
-        <i class="fa fa-signal" aria-hidden="true" @click='showMusicList'></i>
+        <i class="fa" aria-hidden="true" @click='showMusicList' :class='palyMusic'></i>
     </div>
 
 </div>
@@ -25,6 +25,11 @@ export default {
             // shoMenu: this.showMenu
         }
     },
+    computed: {
+        palyMusic() {
+          return this.$store.getters.getIsPlaying ? 'fa-spinner' : 'fa-signal'
+        }
+    },
     methods: {
         showMueu() {
             store.dispatch({
@@ -38,7 +43,7 @@ export default {
         // }
 
         showMusicList() {
-           store.dispatch('show_MusicList')
+            store.dispatch('show_MusicList')
         }
 
     }

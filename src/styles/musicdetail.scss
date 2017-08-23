@@ -6,7 +6,6 @@
     background: #ccc;
     top: 0;
     .fifterbg {
-        background: url("http://oiq8j9er1.bkt.clouddn.com/music_%E5%A4%96%E9%9D%A2%E7%9A%84%E4%B8%96%E7%95%8C.jpg") center center / cover;
         position: fixed;
         top: 0;
         width: 100%;
@@ -51,37 +50,49 @@
     height: auto;
     height: 70vh;
     overflow: hidden;
-    .cdcard {
-        position: relative; // height: 17vh;
-        z-index: 3;
-        .line {
-            width: 80%;
-            height: 1px;
-            margin: auto;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0))
+    position: relative; // height: 17vh;
+    width: 100%;
+    .line {
+        width: 80%;
+        height: 1px;
+        margin: auto;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0))
+    }
+    .triger {
+        background-image: url(/static/swith.png);
+        background-size: cover;
+        width: 90px;
+        height: 140px;
+        position: absolute;
+        top: -18px;
+        bottom: 0;
+        left: 50%;
+        right: 0;
+        transition: all 0.3s;
+        transform-origin: 14px 16px;
+        z-index: 99;
+        transform: translate3d(-16px, 0, 0) rotateZ(0deg);
+        &.pause {
+            transform: translate3d(-16px, 0, 0) rotateZ(-30deg);
         }
-        .triger {
-            background-image: url(/static/swith.png);
-            background-size: cover;
-            width: 90px;
-            height: 140px;
-            transform: rotateZ(-22deg);
-            position: absolute;
-            top: 77px;
-            bottom: 0;
-            left: 85px;
-            right: 0;
-            margin: auto; // transform: rotateZ(3deg);
-            // top: 105px;
-            // left: 63px;
+    }
+    @keyframes goRotate {
+        0% {
+            transform: rotate(0)
+        }
+        100% {
+            transform: rotate(360deg)
         }
     }
     .cdrotate {
-        height: 45vh;
+        height: 44vh;
         position: relative;
         overflow: hidden;
         margin-top: 8vh;
-        margin-bottom: 12vh;
+        margin-bottom: 12vh; // transform: rotate(50deg);
+        &.animate {
+            animation: goRotate 16s linear infinite 0.1s;
+        }
         img {
             width: 28vh;
             height: 28vh;
@@ -91,6 +102,7 @@
             left: 0;
             right: 0;
             margin: auto;
+            background-size: 5800%;
         }
         .rotatebg {
             position: absolute;
@@ -103,7 +115,7 @@
             height: 44vh;
             background: url("/static/cd-mine.png");
             background-size: cover;
-            z-index: 2
+            z-index: 2;
         }
     }
 }
@@ -115,11 +127,14 @@
     padding: 0 10%;
     display: flex;
     align-items: center;
+    margin-top: 6vh;
     i {
         flex: 1;
         width: 40px; // height: 40px;
-        font-size: 26px; // line-height:8vh;
+        font-size: 20px; // line-height:8vh;
         height: 8vh;
+        line-height: 8vh;
+        color: rgba(255, 255, 255, 0.8);
     }
 }
 
@@ -143,24 +158,9 @@
         font-size: 20px;
     }
     .playMusic {
-        font-size: 48px;
+        font-size: 36px;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // 音乐列表入场出厂方式
 .silderUp-enter-to,
@@ -176,4 +176,53 @@
 .silderUp-leave-to {
     transform: translateX(100%);
     opacity: 0
+}
+
+.range {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0 10px;
+    .rangeNowtime {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.8);
+        margin-right: 10px;
+    }
+    .duration {
+        flex: 1;
+        height: 2px;
+        border-radius: 1px;
+        background: rgba(244, 244, 244, 0.3);
+        margin: 0 auto;
+        font-size: 0;
+        cursor: pointer;
+        position: relative;
+        text-align: left;
+        .currentProgress {
+            display: inline-block;
+            width: 0%;
+            height: 2px;
+            background: #e98;
+            float: left;
+        }
+        .ball {
+            width: 12px;
+            height: 12px;
+            background-color: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: -5px;
+            float: left;
+            
+        }
+    }
+    .rangeAlltime {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.8);
+        margin-left: 10px;
+    }
 }

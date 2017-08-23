@@ -4,18 +4,41 @@ import Login from '@/components/Login'
 
 
 
-const Home=resolve=>require(['@/components/Home'], resolve);
-const Friend=resolve=>require(['@/components/Frirend'],resolve)
-const Me=resolve=>require(['@/components/Me'],resolve)
-const Mymusic=resolve=>require(['@/components/Mymusic'],resolve)
-const Discover=resolve=>require(['@/components/Discover'],resolve)
+const Home = resolve => require(['@/components/Home'], resolve);
+const Friend = resolve => require(['@/components/Frirend'], resolve)
+const Me = resolve => require(['@/components/Me'], resolve)
+const Mymusic = resolve => require(['@/components/Mymusic'], resolve)
+const Discover = resolve => require(['@/components/Discover'], resolve)
+const Findrecommend = resolve => require(['@/components/Discover/findrecommend.vue'], resolve)
+const Findsheet = resolve => require(['@/components/Discover/findsheet.vue'], resolve)
 Vue.use(Router)
 
 export default new Router({
   routes: [{
+      // findmusic   第一页
+      path: '*',
+      component: Mymusic
+    },
+    {
       path: '/',
       name: 'discover',
-      component: Discover
+      component: Discover,
+      children: [{
+          // 第二页的第一个
+          path: '/discover/',
+          redirect: '/discover/findrecommend'
+        },
+        {
+          // findmusic   第一页
+          path: '/discover/findrecommend',
+          component: Findrecommend
+        },
+        {
+          // findmusic   第一页
+          path: '/discover/findsheet',
+          component: Findsheet
+        }
+      ]
     },
     {
       path: '/friend',
