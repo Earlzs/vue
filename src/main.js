@@ -8,8 +8,11 @@ import store from './store'
 import 'font-awesome/css/font-awesome.min.css'
 import './styles/base.scss'
 import axios from 'axios'
-
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 Vue.config.productionTip = false
+Vue.use(VueAwesomeSwiper)
+require('swiper/dist/css/swiper.css')
+
 
 Vue.prototype.axios = axios
 /* eslint-disable no-new */
