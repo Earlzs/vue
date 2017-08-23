@@ -18,6 +18,9 @@ const audio = {
     musicLoadStart: false,
     // 播放类型   1是自动播放  2是循环播放  3是随机播放
     playType: 3,
+    //歌单列表数据
+    MusicSheetList:[],
+    isShowSongList:true
   },
   getters: {
     getMusicList: state => state.musicList,
@@ -38,6 +41,10 @@ const audio = {
     getIsLoadStart: state => state.musicLoadStart,
     // 获取播放类型
     getMusicPlayType: state => state.playType,
+
+    // 获取歌单信息
+    getMusicSheetList: state => state.musicSheetList,
+    getisShowSongList:state=>state.isShowSongList
   },
   mutations: {
     play(state) {
@@ -71,7 +78,7 @@ const audio = {
       //获取当前的播放方式
       let type = state.playType;
 
-
+      //根据播放方式的不同决定接下来按什么顺序播放
       if (type === 1) {
         state.currentIndex++;
         const length = state.musicList.length
@@ -98,7 +105,7 @@ const audio = {
       }
 
     },
-
+    //音乐的播放暂停
     togglePlay(state) {
       if (state.playing) {
         state.playing = false
@@ -108,19 +115,24 @@ const audio = {
         state.audioele.play()
       }
     },
+    //设置audie元素 方便操作
     set_AudioEle(state, ele) {
       state.audioele = ele
     },
+    //音乐列表
     setMusicList(state, obj) {
       state.musicList = obj.list
     },
+    //全部音乐信息
     setMusicAllList(state, obj) {
       state.musicList = obj.all;
       state.musicAllList = obj
     },
+    //range组件  当前音乐进度时间
     setCurrentTime(state, obj) {
       state.currentTime = obj.time
     },
+    //详情显示控制
     setMusicDetail(state, obj) {
       state.musicDetail = obj.isShow
     },
@@ -132,7 +144,7 @@ const audio = {
     setMusicLoadStart(state, obj) {
       state.musicLoadStart = obj.isloadstart
     },
-
+    //设置播放类型
     setPlayType(state) {
       if (state.playType === 3) {
         state.playType = 1
@@ -140,6 +152,15 @@ const audio = {
         state.playType++
       }
     },
+
+    //
+    setMusicSheetList(state,obj){
+        state.MusicSheetList=obj.data
+    },
+    //
+    setIsShowSongSheet(state,obj){
+      state.isShowSongList=obj.isShow
+    }
   },
   actions: {
     //设置音频元素
@@ -195,8 +216,10 @@ const audio = {
     }, obj) {
       commit('MusicDuration', obj)
     },
-
-
+    //设置歌单列表数据
+    set_MusicSheetList({commit},obj){
+      commit('setMusicSheetList',obj)
+    }
   }
 }
 export default audio

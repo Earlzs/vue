@@ -50,7 +50,7 @@ export default {
             this.$refs.toggleicon.style.transform = this.showSheets ? 'rotate(-90deg) ' : 'rotate(0)';
             this.showSheets = !this.showSheets;
         },
-        showSongSheet(list) {
+        showSongSheet(data) {
             store.dispatch({
                 type: 'set_MusicSheetList',
                 data: data

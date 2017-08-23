@@ -3,7 +3,7 @@
     <div class='songList' v-show="showSonglist">
         <div class='song-header'>
             <div>
-                <i class="fa fa-arrow-left" aria-hidden="true"></i><span> Music list</span>
+                <i class="fa fa-arrow-left" aria-hidden="true" @click='hideSongList'></i><span> Music list</span>
             </div>
             <i class="fa fa-search" aria-hidden="true"></i>
         </div>
@@ -55,10 +55,10 @@
                             1
                         </div>
                         <div class='song-info'>
-                                <span class='info-name'>2121</span>
-                                <span class='info-author'>212121</span>
+                            <span class='info-name'>2121</span>
+                            <span class='info-author'>212121</span>
                         </div>
-                         <i class="fa fa-music" aria-hidden="true"></i> 
+                        <i class="fa fa-music" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
@@ -73,14 +73,26 @@ import store from '../store/'
 
 export default {
     data: function() {
-        return {}
-    },
-    computed: {
-        showSonglist() {
-            return this.$store.getters.isShowSongList
+        return {
+            isShow: false,
         }
     },
-    methods: {}
+    computed: {
+
+        showSonglist() {
+            this.isShow = this.$store.getters.getIsShowSongSheet ? this.$store.getters.getIsShowSongSheet : false
+            return this.isShow
+        },
+
+    },
+    methods: {
+        hideSongList(){
+            store.commit({
+                type:'setIsShowSongSheet',
+                data:'false'
+            })
+        }
+    }
 }
 </script>
 

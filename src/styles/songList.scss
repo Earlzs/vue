@@ -124,3 +124,25 @@
         }
     }
 }
+
+
+
+
+
+
+// 音乐列表入场出厂方式
+
+.songList-enter-to,
+.songList-leave-to {
+    transition: all 0.8s
+}
+
+.songList-enter {
+    transform: rotate(360deg);
+    opacity: 0;
+}
+
+.songList-leave-to {
+    transform: translateX(100%);
+    opacity: 0
+}

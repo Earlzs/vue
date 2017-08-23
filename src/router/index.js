@@ -19,27 +19,7 @@ export default new Router({
       path: '*',
       component: Mymusic
     },
-    {
-      path: '/',
-      name: 'discover',
-      component: Discover,
-      children: [{
-          // 第二页的第一个
-          path: '/discover/',
-          redirect: '/discover/findrecommend'
-        },
-        {
-          // findmusic   第一页
-          path: '/discover/findrecommend',
-          component: Findrecommend
-        },
-        {
-          // findmusic   第一页
-          path: '/discover/findsheet',
-          component: Findsheet
-        }
-      ]
-    },
+
     {
       path: '/friend',
       name: "friend",
@@ -48,6 +28,23 @@ export default new Router({
       path: '/discover',
       name: "discover",
       component: Discover,
+      
+      children: [{
+        // 第二页的第一个
+        path: '/discover/',
+        redirect: '/discover/findrecommend'
+      },
+      {
+        // findmusic   第一页
+        path: '/discover/findrecommend',
+        component: Findrecommend
+      },
+      {
+        // findmusic   第一页
+        path: '/discover/findsheet',
+        component: Findsheet
+      }
+    ]
     }, {
       path: '/mymusic',
       name: "mymusic",
