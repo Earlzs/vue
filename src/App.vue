@@ -1,5 +1,6 @@
 <template>
 <div id="app">
+  <audio id="myaudio" ref="audio" @playing="musicOnPlaying" @canplay="musicCanPlay" @timeupdate='musicTimeUpdate' @ended='musicEnded'  @loadstart="loadStart"></audio>
   <v-header></v-header>
   <transition name="fade" mode="out-in">
     <router-view></router-view>
@@ -31,15 +32,57 @@ export default {
     'v-songlist':songList
   },
 
+  methods: {
+      musicEnded(){
+      store.dispatch('paly_ended')
+    },
+    //控制音乐处于播放状态
+    musicOnPlaying() {
+      store.commit('play')
+    },
+    //设置音乐总时长
+    musicCanPlay() {
+      store.dispatch({
+        type: 'set_MusicDuration',
+        duration: Math.floor(this.$refs.audio.duration)
+      })
+       store.commit({
+        type: 'setMusicLoadStart',
+        isloadstart: false
+      })
+    },
+    musicTimeUpdate() {
+      store.dispatch({
+        type: 'set_CurrentTime',
+        time: Math.floor(this.$refs.audio.currentTime)
+      })
+    },
+        // 音乐加载
+    loadStart () {
+      store.commit({
+        type: 'setMusicLoadStart',
+        isloadstart: true
+      })
+    }
+  },
   created() {
     let LocalApi = 'static/data.json'
     axios.get(LocalApi).then((res) => {
       // this.info=res.data.user
       store.dispatch('set_MusicAllList', res.data.music)
-      console.log(res.data.music)
+      console.log(res.data.music);
+         // 所有的数据存起来  包括音乐个人信息 等等
+      store.dispatch('set_AllInfo', res.data)
+      
+      this.$refs.audio.setAttribute('src', store.getters.getCurrentMusic.url)
+      //获取audio元素方便操作
+      store.dispatch('set_AudioEle', this.$refs.audio)
     })
   },
 }
+  
+  
+
 </script>
 
 <style>

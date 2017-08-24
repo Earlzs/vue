@@ -1,6 +1,6 @@
 <template>
 <div>
-    <swiper :options="swiperOption" class="swiper-box">
+    <swiper :options="swiperOption" class="swiper-box"  ref="mySwiper">
         <swiper-slide class="swiper-item" style='background-image: url("http://p1.music.126.net/d6LJlI-KWzaKG7PvfwFeNw==/18701593278870289.jpg");background-size:cover'></swiper-slide>
         <swiper-slide class="swiper-item" style='background-image: url("http://p1.music.126.net/7AGS-0gGxvJt3tLV-EDt3Q==/18911599998058601.jpg");background-size:cover'></swiper-slide>
         <swiper-slide class="swiper-item" style='background-image: url("http://p1.music.126.net/G-EozD2n0Ga5HMo5uoz06Q==/19230458370112292.jpg");background-size:cover'></swiper-slide>
@@ -67,12 +67,7 @@ export default {
             return this.$refs.mySwiper.swiper
         }
     },
-    mounted() {
-        // you can use current swiper instance object to do something(swiper methods)
-        // 然后你就可以使用当前上下文内的swiper对象去做你想做的事了
-        console.log('this is current swiper instance object', this.swiper)
-        this.swiper.slideTo(3, 1000, false)
-    },
+
     components: {
         swiper,
         swiperSlide,

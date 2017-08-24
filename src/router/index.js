@@ -31,17 +31,17 @@ export default new Router({
       
       children: [{
         // 第二页的第一个
-        path: '/discover/',
+        path: '/',
         redirect: '/discover/findrecommend'
       },
       {
         // findmusic   第一页
-        path: '/discover/findrecommend',
+        path: 'findrecommend',
         component: Findrecommend
       },
       {
         // findmusic   第一页
-        path: '/discover/findsheet',
+        path: 'findsheet',
         component: Findsheet
       }
     ]
