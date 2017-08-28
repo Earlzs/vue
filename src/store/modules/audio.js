@@ -19,7 +19,7 @@ const audio = {
     // 播放类型   1是自动播放  2是循环播放  3是随机播放
     playType: 3,
     //歌单列表数据
-    MusicSheetList:[],
+    musicSheetList:[],
     isShowSongList:true
   },
   getters: {
@@ -155,7 +155,7 @@ const audio = {
 
     //
     setMusicSheetList(state,obj){
-        state.MusicSheetList=obj.data
+        state.musicSheetList=obj.data
     },
     //
     setIsShowSongSheet(state,obj){

@@ -18,7 +18,6 @@ import axios from 'axios'
 export default {
   computed: {
     items() {
-      console.log(this.$store.getters.getAllMusicList.sheets);
       return this.$store.getters.getAllMusicList.sheets
     }
   },

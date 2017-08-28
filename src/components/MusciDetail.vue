@@ -106,8 +106,6 @@ export default {
         },
         //获取当前音乐
         getCurrentMusic() {
-
-            console.log(this.$store.getters.getCurrentMusic);
             return this.$store.getters.getCurrentMusic ? this.$store.getters.getCurrentMusic : ''
         },
         musicPlayType () {

@@ -18,14 +18,14 @@ const songList={
         },
         	// 设置是否显示歌单信息
 		setIsShowSongSheet (state, obj) {
-			state.showSongSheet = obj.isShow
+			state.isShow = obj.isShow
 		},
     },
 
     getters:{
 
         // 获取歌单列表的显示状态
-		getIsShowSongSheet: state => state.showSongSheet,
+		getIsShowSongSheet: state => state.isShow,
     }
 }
 export default songList;

@@ -51,6 +51,7 @@ export default {
             this.showSheets = !this.showSheets;
         },
         showSongSheet(data) {
+           
             store.dispatch({
                 type: 'set_MusicSheetList',
                 data: data
@@ -60,7 +61,11 @@ export default {
                 isShow: true
             })
         }
+    },
+    created(){
+        console.log(1111112123123100000000000000)
     }
+    
 }
 </script>
 

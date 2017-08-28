@@ -8,15 +8,15 @@
             <i class="fa fa-search" aria-hidden="true"></i>
         </div>
 
-
         <div class='musicDetail'>
-            <div class='musicDetail-top clearfix'>
-                <img src="http://oiq8j9er1.bkt.clouddn.com/music_owl_city.jpg" alt="">
+            <div class='musicDetail-top' ref='bgcImg'>
+                <img v-if="getSongSheet.info" :src="getSongSheet.info[0].img_url" alt="">
                 <div class='musicDetail-r'>
-                    <div class='detailname'>在欧洲田园般的乡村上骑单车</div>
+                    <div class='detailname' v-if="getSongSheet">{{getSongSheet.name}}</div>
                     <div>
-                        <img src="" alt="">
-                        <span>user.name </span> >
+
+                        <img v-if="getSongSheet.user" style='width:20px;height:20px;border-radius:50%;color:#f0f0f0' :src="getSongSheet.user.avatar" alt="">
+                        <span v-if="getSongSheet.user">{{getSongSheet.user.name}}</span> >
                     </div>
                 </div>
 
@@ -55,10 +55,10 @@
                             1
                         </div>
                         <div class='song-info'>
-                            <span class='info-name'>2121</span>
-                            <span class='info-author'>212121</span>
+                            <span class='info-name'>Far Away</span>
+                            <span class='info-author'>Yinyues</span>
                         </div>
-                        <i class="fa fa-music" aria-hidden="true"></i>
+                        <i class="fa fa-ellipsis-v fa-2x" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
@@ -74,25 +74,54 @@ import store from '../store/'
 export default {
     data: function() {
         return {
-            isShow: false,
+            MusicSheet: [],
+            isShow: false
         }
     },
     computed: {
 
         showSonglist() {
-            this.isShow = this.$store.getters.getIsShowSongSheet ? this.$store.getters.getIsShowSongSheet : false
+            this.isShow = this.$store.getters.getIsShowSongSheet
             return this.isShow
         },
 
+        // getSongSheet() {
+        //     console.log(11111)
+        //     console.log(this.$store.getters.getMusicSheetList);
+        //     return this.$store.getters.getMusicSheetList ? this.$store.getters.getMusicSheetList : ''
+        // }
+        getSongSheet() {
+            console.log(this.$store.getters.getMusicSheetList)
+            this.sheetData = this.$store.getters.getMusicSheetList
+            return this.$store.getters.getMusicSheetList ? this.$store.getters.getMusicSheetList : ''
+        },
+
     },
+
     methods: {
-        hideSongList(){
+
+        hideSongList() {
             store.commit({
-                type:'setIsShowSongSheet',
-                data:'false'
+                type: 'setIsShowSongSheet',
+                isShow: false
             })
         }
+    },
+    watch: {
+        isShow: function(newisshwo, oldisshow) {
+            // this.$refs.songsheet.scrollTop = 0
+            let img = this.$store.getters.getMusicSheetList ? this.$store.getters.getMusicSheetList : ''
+            if (newisshwo) {
+                this.$refs.bgcImg.style.backgroundImage = `url(${img.info[0].img_url})`
+                this.$refs.bgcImg.style.backgroundSize = `5800%`
+                this.$refs.bgcImg.style.backgroundPosition = `center center`
+                // this.$refs.songheader.style.backgroundImage = `url(${img.info[0].img_url})`
+                // this.$refs.songheader.style.backgroundSize = `5800%`
+                // this.$refs.songheader.style.backgroundPosition = `center center`
+            }
+        }
     }
+
 }
 </script>
 
