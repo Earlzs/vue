@@ -63,7 +63,7 @@ export default {
         }
     },
     created(){
-        console.log(1111112123123100000000000000)
+        console.log('--------------')
     }
     
 }
